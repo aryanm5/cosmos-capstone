@@ -1,0 +1,52 @@
+---
+title: "Aryan RMD"
+author: "Aryan Mittal"
+date: "2022-07-25"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+
+data <- readr::read_csv("alzheimer_data.csv")
+attach(data)
+```
+
+## Chess to Diagnosis
+
+```{r}
+chess_diag <- data %>%
+  filter(games > 0 & games < 4 & diagnosis > 0) %>%
+  nrow() /
+  data %>%
+  filter(games > 0 & games < 4) %>%
+  nrow()
+```
+
+**`r chess_diag*100`%** of people with chess problems (GAMES=1,2,3) have a diagnosis.
+
+## Trail A to Diagnosis
+```{r}
+traila_diag <- data %>%
+  filter(traila >= 90 & traila <= 150 & diagnosis > 0) %>%
+  nrow() /
+  data %>%
+  filter(traila >= 90 & traila <= 150) %>%
+  nrow()
+```
+
+**`r traila_diag*100`%** of people with Trail A problems (TRAILA=1,2,3) have a diagnosis.
+
+## Trail B to Diagnosis
+```{r}
+trailb_diag <- data %>%
+  filter(trailb >= 250 & trailb <= 300 & diagnosis > 0) %>%
+  nrow() /
+  data %>%
+  filter(trailb >= 250 & trailb <= 300) %>%
+  nrow()
+```
+
+**`r trailb_diag*100`%** of people with Trail B problems (TRAILB=1,2,3) have a diagnosis.
