@@ -49,31 +49,62 @@ chess_graph
 shop_table = table(diagnosis,shopping)
 shop_chisquaretest = chisq.test(shop_table)
 shop_chisquaretest
+shop_p_val = shop_chisquaretest$p.value
+```
+Because the p-value, `r shop_p_val`, is less than 0.05, we can conclude that there is a relationship between shopping and diagnosis.
 
+
+```{r, echo=FALSE}
 bills_table = table(diagnosis,bills)
 bills_chisquaretest = chisq.test(bills_table)
 bills_chisquaretest
+bills_p_val = bills_chisquaretest$p.value
+```
+Because the p-value, `r bills_p_val`, is less than 0.05, we can conclude that there is a relationship between bills and diagnosis.
 
+
+```{r, echo=FALSE}
 taxes_table = table(diagnosis,taxes)
 taxes_chisquaretest = chisq.test(taxes_table)
 taxes_chisquaretest
+taxes_p_val = taxes_chisquaretest$p.value
+```
+Because the p-value, `r taxes_p_val`, is less than 0.05, we can conclude that there is a relationship between taxes and diagnosis.
 
+
+```{r, echo=FALSE}
 stove_table = table(diagnosis,stove)
 stove_chisquaretest = chisq.test(stove_table)
 stove_chisquaretest
+stove_p_val = stove_chisquaretest$p.value
+```
+Because the p-value, `r stove_p_val`, is less than 0.05, we can conclude that there is a relationship between stove and diagnosis.
 
+
+```{r, echo=FALSE}
 meal_table = table(diagnosis,mealprep)
 meal_chisquaretest = chisq.test(meal_table)
 meal_chisquaretest
+meal_p_val = meal_chisquaretest$p.value
+```
+Because the p-value, `r meal_p_val`, is less than 0.05, we can conclude that there is a relationship between meal and diagnosis.
 
+
+```{r, echo=FALSE}
 travel_table = table(diagnosis,travel)
 travel_chisquaretest = chisq.test(travel_table)
 travel_chisquaretest
+travel_p_val = travel_chisquaretest$p.value
+```
+Because the p-value, `r travel_p_val`, is less than 0.05, we can conclude that there is a relationship between travel and diagnosis.
 
+
+```{r, echo=FALSE}
 chess_table = table(diagnosis,games)
 chess_chisquaretest = chisq.test(chess_table)
 chess_chisquaretest
+chess_p_val = chess_chisquaretest$p.value
 ```
-
+Because the p-value, `r chess_p_val`, is less than 0.05, we can conclude that there is a relationship between chess and diagnosis.
 
 
