@@ -31,7 +31,7 @@ travel_graph
 chess_graph =  ggplot(data = alz, aes(x = as.factor(games), fill = as.factor(diagnosis))) + geom_bar()
 chess_graph
 
-#Chi-Squared Test for each question variable
+
 shop_table = table(diagnosis,shopping)
 shop_chisquaretest = chisq.test(shop_table)
 shop_chisquaretest
