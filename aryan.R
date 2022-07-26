@@ -5,6 +5,25 @@ library(tidyverse)
 data <- readr::read_csv("alzheimer_data.csv")
 attach(data)
 
+# Add bin_diag column
+
+# data <- data %>%
+#   mutate(bin_diag = as.integer(diagnosis > 0))
+# attach(data)
+# 
+# write.table(data, "alzheimer_data.csv", quote=FALSE, eol="\n\n", row.names=FALSE, sep=",")
+
+
+# GLM TESTING
+
+library(glmnet)
+
+# glm(games ~ bin_diag, "binomial", data)
+
+
+
+# PROPORTION TESTING
+
 # Percentage of bad chess with a diagnosis: 96.58
 
 data %>%
@@ -37,3 +56,4 @@ data %>%
   data %>%
   filter(trailb >= 250 & trailb <= 300) %>%
   nrow()
+
