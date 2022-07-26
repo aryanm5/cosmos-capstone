@@ -42,6 +42,36 @@ travel_graph
 
 chess_graph =  ggplot(data = alz, aes(x = as.factor(games), fill = as.factor(diagnosis))) + geom_bar()
 chess_graph
+
+trailA_graph =  ggplot(data = alz, aes(x = as.factor(diagnosis), y=traila)) + geom_boxplot()
+trailA_graph
+
+trailB_graph =  ggplot(data = alz, aes(x = as.factor(diagnosis), y=trailb)) + geom_boxplot()
+trailB_graph
+
+hall_graph =  ggplot(data = alz, aes(x = as.factor(hallsev), fill = as.factor(diagnosis))) + geom_bar()
+hall_graph
+
+anx_graph =  ggplot(data = alz, aes(x = as.factor(anxsev), fill = as.factor(diagnosis))) + geom_bar()
+anx_graph
+
+depress_graph =  ggplot(data = alz, aes(x = as.factor(depdsev), fill = as.factor(diagnosis))) + geom_bar()
+depress_graph
+
+gend_graph =  ggplot(data = alz, aes(x = as.factor(female), fill = as.factor(diagnosis))) + geom_bar()
+gend_graph
+
+weight_graph =  ggplot(data = alz, aes(x = as.factor(diagnosis), y=weight)) + geom_boxplot()
+weight_graph
+
+hrate_graph =  ggplot(data = alz, aes(x = as.factor(diagnosis), y=hrate)) + geom_boxplot()
+hrate_graph
+
+blood_graph =  ggplot(data = alz, aes(x = as.factor(diagnosis), y=bpsys)) + geom_boxplot()
+blood_graph
+
+motor_graph =  ggplot(data = alz, aes(x = as.factor(motsev), fill = as.factor(diagnosis))) + geom_bar()
+motor_graph
 ```
 
 ## Chi-Squared Test for each question variable
@@ -107,4 +137,79 @@ chess_p_val = chess_chisquaretest$p.value
 ```
 Because the p-value, `r chess_p_val`, is less than 0.05, we can conclude that there is a relationship between chess and diagnosis.
 
+```{r, echo=FALSE}
+tA_tTest = t.test(traila~bin_diag)
+tA_tTest
+tA_p_val = tA_tTest$p.value
+```
+Because the p-value, `r tA_p_val`, is less than 0.05, we can conclude that there is a relationship between trialA and diagnosis.
 
+```{r, echo=FALSE}
+tB_tTest = t.test(trailb~bin_diag)
+tB_tTest
+tB_p_val = tB_tTest$p.value
+```
+Because the p-value, `r tB_p_val`, is less than 0.05, we can conclude that there is a relationship between trailB and diagnosis.
+
+```{r, echo=FALSE}
+hall_table = table(diagnosis,hallsev)
+hall_chisquaretest = chisq.test(hall_table)
+hall_chisquaretest
+hall_p_val = hall_chisquaretest$p.value
+```
+Because the p-value, `r hall_p_val`, is less than 0.05, we can conclude that there is a relationship between hallucinations and diagnosis.
+
+```{r, echo=FALSE}
+anx_table = table(diagnosis,anxsev)
+anx_chisquaretest = chisq.test(anx_table)
+anx_chisquaretest
+anx_p_val = anx_chisquaretest$p.value
+```
+Because the p-value, `r anx_p_val`, is less than 0.05, we can conclude that there is a relationship between anxiety and diagnosis.
+
+```{r, echo=FALSE}
+depress_table = table(diagnosis,depdsev)
+depress_chisquaretest = chisq.test(depress_table)
+depress_chisquaretest
+depress_p_val = depress_chisquaretest$p.value
+```
+Because the p-value, `r depress_p_val`, is less than 0.05, we can conclude that there is a relationship between depression and diagnosis.
+
+```{r, echo=FALSE}
+gend_table = table(diagnosis,female)
+gend_chisquaretest = chisq.test(gend_table)
+gend_chisquaretest
+gend_p_val = gend_chisquaretest$p.value
+```
+Because the p-value, `r gend_p_val`, is less than 0.05, we can conclude that there is a relationship between gender and diagnosis.
+
+```{r, echo=FALSE}
+weight_tTest = t.test(weight~bin_diag)
+weight_tTest
+weight_p_val = weight_tTest$p.value
+```
+Because the p-value, `r weight_p_val`, is less than 0.05, we can conclude that there is a relationship between weight and diagnosis.
+
+```{r, echo=FALSE}
+
+hrate_tTest = t.test(hrate~bin_diag)
+hrate_tTest
+hrate_p_val = hrate_tTest$p.value
+```
+Because the p-value, `r hrate_p_val`, is less than 0.426, we cannot conclude that there is a relationship between hearth rate and diagnosis.
+
+```{r, echo=FALSE}
+
+blood_tTest = t.test(bpsys~bin_diag)
+blood_tTest
+blood_p_val = blood_tTest$p.value
+```
+Because the p-value, `r blood_p_val`, is less than 0.05, we can conclude that there is a relationship between blood pressure and diagnosis.
+
+```{r, echo=FALSE}
+motor_table = table(diagnosis,motsev)
+motor_chisquaretest = chisq.test(motor_table)
+motor_chisquaretest
+motor_p_val = motor_chisquaretest$p.value
+```
+Because the p-value, `r motor_p_val`, is less than 0.05, we can conclude that there is a relationship between motor disturbanc and diagnosis.
