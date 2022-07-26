@@ -37,7 +37,7 @@ traila_diag <- data %>%
   nrow()
 ```
 
-**`r traila_diag*100`%** of people with Trail A problems (TRAILA=1,2,3) have a diagnosis.
+**`r traila_diag*100`%** of people with Trail A problems (TRAILA>=90) have a diagnosis.
 
 ## Trail B to Diagnosis
 ```{r}
@@ -49,4 +49,4 @@ trailb_diag <- data %>%
   nrow()
 ```
 
-**`r trailb_diag*100`%** of people with Trail B problems (TRAILB=1,2,3) have a diagnosis.
+**`r trailb_diag*100`%** of people with Trail B problems (TRAILB>=250) have a diagnosis.
