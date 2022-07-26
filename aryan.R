@@ -14,6 +14,12 @@ data %>%
   filter(games > 0 & games < 4) %>%
   nrow()
 
+# Number of bad chess samples: 438
+
+data %>%
+  filter(games > 0 & games < 4) %>%
+  nrow()
+
 # Percentage of TRAILA >= 90 with a diagnosis: 91.89%
 
 data %>%
