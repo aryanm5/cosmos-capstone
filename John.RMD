@@ -6,6 +6,7 @@ output: html_document
 ---
 ```{r, , echo=FALSE}
 alz <- read.csv("alzheimer_data.csv")
+
 attach(alz)
 library(car)
 library(ggplot2)
@@ -40,10 +41,12 @@ mealprep_graph
 travel_graph =  ggplot(data = alz, aes(x = as.factor(travel), fill = as.factor(diagnosis))) + geom_bar()
 travel_graph
 
-chess_graph =  ggplot(data = alz, aes(x = as.factor(games), fill = as.factor(diagnosis))) + geom_bar()
+alz <- alz |>
+  filter(games != 8)
+chess_graph =  ggplot(data = alz, aes(x = as.factor(games), fill = as.factor(diagnosis))) + labs(title = "Amount of Difficulty Subject Faced Performing a Game or Hobby based on Alzheimer Diagnosis", x = "Difficulty Level", y = "Number of Patients")+geom_bar()+ theme(plot.title = element_text(size = 10))
 chess_graph
 
-trailA_graph =  ggplot(data = alz, aes(x = as.factor(diagnosis), y=traila)) + geom_boxplot()
+trailA_graph =  ggplot(data = alz, aes(x = as.factor(diagnosis), y=traila)) +labs(title = "Amount of Time Taken to Complete a Trail Making Task Based on Alzheimer Diagnosis", x = "Diagnosis", y = "Time Taken (seconds)")+ geom_boxplot(fill = "Purple", color = "black")+ theme(plot.title = element_text(size = 13))
 trailA_graph
 
 trailB_graph =  ggplot(data = alz, aes(x = as.factor(diagnosis), y=trailb)) + geom_boxplot()
@@ -212,4 +215,4 @@ motor_chisquaretest = chisq.test(motor_table)
 motor_chisquaretest
 motor_p_val = motor_chisquaretest$p.value
 ```
-Because the p-value, `r motor_p_val`, is less than 0.05, we can conclude that there is a relationship between motor disturbanc and diagnosis.
+Because the p-value, `r motor_p_val`, is less than 0.05, we can conclude that there is a relationship between motor disturbance and diagnosis.
