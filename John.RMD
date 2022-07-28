@@ -17,7 +17,7 @@ library(ggplot2)
 ran <- sample(1:2700,2700)
 new_data <- alz[ran,]
 
-pairs(~diagnosis +shopping+bills+taxes+stove+mealprep+travel, data = new_data, main="Simple Scatterplot Matrix")
+pairs(~diagnosis +shopping+bills+taxes+stove+mealprep+travel, data = alz, main="Simple Scatterplot Matrix")
 ```
 
 ## Barplots relating diagnosis with certain question variables

@@ -79,3 +79,29 @@ appsev_perc = nrow(filter(alz_appsev_non0, diagnosis > 0)) / nrow(alz_appsev_non
 diag_logistic <- glm(bin_diag~games+traila+trailb+female+anxsev+weight,family=binomial)
 plot(diag_logistic)
 
+#ODDS
+
+#odds function - returns the odds of AD given a variable (ex. hallsev) and the 
+# value of that variable (ex. 1)
+
+odds_alz <- function(var, val) {
+  new_alz = filter(alz, var == val)
+  p = nrow(filter(new_alz, bin_diag == 1)) / nrow(new_alz)
+  return(
+    p / (1-p))
+}
+
+#odds ratio function - returns the odds ratio of 2 odds
+odds_ratio <- function(odds1, odds2) {
+  return(odds1 / odds2)
+}
+
+#example
+odds_hallsev1 = odds_alz(hallsev,1)
+odds_hallsev0 = odds_alz(hallsev,0)
+
+odds_ratio(odds_hallsev1, odds_hallsev0)
+
+
+
+
