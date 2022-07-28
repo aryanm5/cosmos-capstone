@@ -378,7 +378,7 @@ pre code {
   data %&gt;%
   filter(games &gt; 0 &amp; games &lt; 4) %&gt;%
   nrow()</code></pre>
-<p><strong>96.5753425%</strong> of people with chess problems
+<p><strong>96.9273743%</strong> of people with chess problems
 (GAMES=1,2,3) have a diagnosis.</p>
 </div>
 <div id="trail-a-to-diagnosis" class="section level2">
@@ -389,19 +389,19 @@ pre code {
   data %&gt;%
   filter(traila &gt;= 90 &amp; traila &lt;= 150) %&gt;%
   nrow()</code></pre>
-<p><strong>91.8918919%</strong> of people with Trail A problems
+<p><strong>92.8571429%</strong> of people with Trail A problems
 (TRAILA&gt;=90) have a diagnosis.</p>
 </div>
 <div id="trail-b-to-diagnosis" class="section level2">
 <h2>Trail B to Diagnosis</h2>
 <pre class="r"><code>trailb_diag &lt;- data %&gt;%
-  filter(trailb &gt;= 250 &amp; trailb &lt;= 300 &amp; diagnosis &gt; 0) %&gt;%
+  filter(trailb &gt;= 260 &amp; trailb &lt;= 300 &amp; diagnosis &gt; 0) %&gt;%
   nrow() /
   data %&gt;%
-  filter(trailb &gt;= 250 &amp; trailb &lt;= 300) %&gt;%
+  filter(trailb &gt;= 260 &amp; trailb &lt;= 300) %&gt;%
   nrow()</code></pre>
-<p><strong>91.7721519%</strong> of people with Trail B problems
-(TRAILB&gt;=250) have a diagnosis.</p>
+<p><strong>90.8629442%</strong> of people with Trail B problems
+(TRAILB&gt;=260) have a diagnosis.</p>
 </div>
 
 
