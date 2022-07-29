@@ -42,11 +42,11 @@ traila_diag <- data %>%
 ## Trail B to Diagnosis
 ```{r}
 trailb_diag <- data %>%
-  filter(trailb >= 250 & trailb <= 300 & diagnosis > 0) %>%
+  filter(trailb >= 260 & trailb <= 300 & diagnosis > 0) %>%
   nrow() /
   data %>%
-  filter(trailb >= 250 & trailb <= 300) %>%
+  filter(trailb >= 260 & trailb <= 300) %>%
   nrow()
 ```
 
-**`r trailb_diag*100`%** of people with Trail B problems (TRAILB>=250) have a diagnosis.
+**`r trailb_diag*100`%** of people with Trail B problems (TRAILB>=260) have a diagnosis.

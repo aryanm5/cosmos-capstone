@@ -9,9 +9,9 @@ attach(data)
 
 library(glmnet)
 
-test_range <- 540 # Length of testing dataset (540 = 20% of training dataset)
-test_data <- head(data, test_range) # Get first 540 rows
-data <- tail(data, -test_range) # Delete first 540 rows from training data
+test_range <- 438 # Length of testing dataset (438 = 20% of training dataset)
+test_data <- head(data, test_range) # Get first 438 rows
+data <- tail(data, -test_range) # Delete first 438 rows from training data
 
 # xfactors for categorical variables, x for numerical
 xfactors <- model.matrix(bin_diag ~ as.factor(games) + as.factor(taxes) + as.factor(motsev) + as.factor(hallsev) + as.factor(travel))[, -1]
@@ -22,26 +22,16 @@ x        <- as.matrix(data.frame(traila, trailb, csfvol, lhippo, rhippo, frcort,
 glmmod <- glmnet(x, y=as.factor(bin_diag), alpha=1, family="binomial")
 
 
-
-# Save plot as file
-png(file = "coef_graph.png") # The height of the plot in inches
-
-
 # Plot variable coefficients vs. shrinkage parameter lambda.
 plot(glmmod, xvar="lambda")
 
-
-dev.off() # Finish file
 
 coef(glmmod)[,10] # Get coefficients (beta variables)
 
 cv.glmmod <- cv.glmnet(x, y=bin_diag, alpha=1)
 
-png(file = "meansq_graph.png")
 
 plot(cv.glmmod)
-
-dev.off()
 
 model <- glm(bin_diag ~ x) # this is the model with no lasso
 
@@ -58,9 +48,9 @@ cutoff <- 0.5 # Prediction is > or < than 0.5.
 pred <- replace(pred, pred < cutoff, 0) # Replace predictions < 0.5 with 0
 pred <- replace(pred, pred >= cutoff, 1) # Replace predictions >= 0.5 with 1
 
-plot(actual, lwd=1, type="o", col="blue", ylab="Actual vs. Predicted") # Plot actual values
+#plot(actual, lwd=1, type="o", col="blue", ylab="Actual vs. Predicted") # Plot actual values
 
-lines(pred, lwd=2, type="o", col="red") # Plot predicted values
+#lines(pred, lwd=2, type="o", col="red") # Plot predicted values
 
 # Calculate accuracy
 count <- 0
@@ -74,38 +64,10 @@ accuracy <- count/test_range*100
 accuracy
 
 
-# PROPORTION TESTING
 
-# Percentage of bad chess with a diagnosis: 96.58
 
-data %>%
-  filter(games > 0 & games < 4 & diagnosis > 0) %>%
-  nrow() /
-  data %>%
-  filter(games > 0 & games < 4) %>%
-  nrow()
+# MODEL FORMULA
 
-# Number of bad chess samples: 438
-
-data %>%
-  filter(games > 0 & games < 4) %>%
-  nrow()
-
-# Percentage of TRAILA >= 90 with a diagnosis: 91.89%
-
-data %>%
-  filter(traila >= 90 & traila <= 150 & diagnosis > 0) %>%
-  nrow() /
-  data %>%
-  filter(traila >= 90 & traila <= 150) %>%
-  nrow()
-
-# Percentage of TRAILB >= 250 with a diagnosis: 91.77%
-
-data %>%
-  filter(trailb >= 250 & trailb <= 300 & diagnosis > 0) %>%
-  nrow() /
-  data %>%
-  filter(trailb >= 250 & trailb <= 300) %>%
-  nrow()
+# logit(y) = -0.9208534345 + 0.4766111650(games.1) + 0.0034401384(traila) + 0.0051336479(trailb) + 0.0007178301(csfvol) - 0.2380472357(lhippo) + 0.8869967906(taxes.3) + 0.0035409165(taxes.2) + 0.1064869743(travel.1)
+# P = exp(y)/(1+exp(y))
 
