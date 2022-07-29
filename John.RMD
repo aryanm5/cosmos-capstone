@@ -23,6 +23,7 @@ pairs(~diagnosis +shopping+bills+taxes+stove+mealprep+travel, data = new_data, m
 ## Barplots relating diagnosis with certain question variables
 ```{r, echo=FALSE}
 
+
 shop_graph = ggplot(data = alz, aes(x = as.factor(shopping), fill = as.factor(diagnosis))) + geom_bar()
 shop_graph
 
@@ -43,11 +44,14 @@ travel_graph
 
 alz <- alz |>
   filter(games != 8)
-chess_graph =  ggplot(data = alz, aes(x = as.factor(games), fill = as.factor(diagnosis))) + labs(title = "Amount of Difficulty Subject Faced Performing a Game or Hobby based on Alzheimer Diagnosis", x = "Difficulty Level", y = "Number of Patients")+geom_bar()+ theme(plot.title = element_text(size = 10))
+chess_graph =  ggplot(data = alz, aes(x = as.factor(games), fill = as.factor(diagnosis))) + labs(fill = "Diagnosis", title = "Amount of Difficulty Subject Faced Performing a Game or Hobby based on Alzheimer Diagnosis", x = "Difficulty Level", y = "Number of Patients")+geom_bar()+ theme(plot.title = element_text(size = 10))
 chess_graph
+
+
 
 trailA_graph =  ggplot(data = alz, aes(x = as.factor(diagnosis), y=traila)) +labs(title = "Amount of Time Taken to Complete a Trail Making Task Based on Alzheimer Diagnosis", x = "Diagnosis", y = "Time Taken (seconds)")+ geom_boxplot(fill = "Purple", color = "black")+ theme(plot.title = element_text(size = 13))
 trailA_graph
+
 
 trailB_graph =  ggplot(data = alz, aes(x = as.factor(diagnosis), y=trailb)) + geom_boxplot()
 trailB_graph
