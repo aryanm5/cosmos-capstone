@@ -62,3 +62,12 @@ for (i in 1:test_range) {
 
 accuracy <- count/test_range*100
 accuracy
+
+
+
+
+# MODEL FORMULA
+
+# logit(y) = -0.9208534345 + 0.4766111650(games.1) + 0.0034401384(traila) + 0.0051336479(trailb) + 0.0007178301(csfvol) - 0.2380472357(lhippo) + 0.8869967906(taxes.3) + 0.0035409165(taxes.2) + 0.1064869743(travel.1)
+# P = exp(y)/(1+exp(y))
+
